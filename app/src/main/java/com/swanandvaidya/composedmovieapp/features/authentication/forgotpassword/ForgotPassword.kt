@@ -1,4 +1,4 @@
-package com.swanandvaidya.composedmovieapp.features.authentication.signup
+package com.swanandvaidya.composedmovieapp.features.authentication.forgotpassword
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedTextField
@@ -22,14 +21,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.swanandvaidya.composedmovieapp.R
 
 @Composable
-fun SignUpScreen() {
+fun ForgotPasswordScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -51,34 +50,16 @@ fun SignUpScreen() {
                 .padding(all = 20.dp)
         ) {
             Text(
-                text = "Email",
-                fontSize = 16.sp,
+                text = "Forgot Password?",
+                fontSize = 28.sp,
+                fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(top = 10.dp)
             )
-            OutlinedTextField(
-                value = "",
-                onValueChange = {},
-                shape = RoundedCornerShape(30.dp),
-                placeholder = {
-                    Text(
-                        text = "your email",
-                        color = Color.LightGray,
-                        fontSize = 16.sp
-                    )
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 10.dp),
-                colors = OutlinedTextFieldDefaults.colors(
-                    unfocusedBorderColor = colorResource(id = R.color.color_orange),
-                    focusedBorderColor = colorResource(id = R.color.color_orange),
-                )
-            )
-
             Text(
-                text = "Password",
-                fontSize = 16.sp,
-                modifier = Modifier.padding(top = 30.dp)
+                text = "Don't worry! it happens. Please enter the registered email id, we will send you an email with password reset link on your email id.",
+                fontSize = 18.sp,
+                color = Color.Gray,
+                modifier = Modifier.padding(top = 20.dp)
             )
             OutlinedTextField(
                 value = "",
@@ -86,46 +67,19 @@ fun SignUpScreen() {
                 shape = RoundedCornerShape(30.dp),
                 placeholder = {
                     Text(
-                        text = "password",
+                        text = "youremail@example.com",
                         color = Color.LightGray,
                         fontSize = 16.sp
                     )
                 },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 10.dp),
+                    .padding(top = 20.dp),
                 colors = OutlinedTextFieldDefaults.colors(
                     unfocusedBorderColor = colorResource(id = R.color.color_orange),
                     focusedBorderColor = colorResource(id = R.color.color_orange),
                 )
             )
-
-            Text(
-                text = "Mobile Number",
-                fontSize = 16.sp,
-                modifier = Modifier.padding(top = 30.dp)
-            )
-            OutlinedTextField(
-                value = "",
-                onValueChange = {},
-                shape = RoundedCornerShape(30.dp),
-                placeholder = {
-                    Text(
-                        text = "mobile number",
-                        color = Color.LightGray,
-                        fontSize = 16.sp
-                    )
-                },
-                keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 10.dp),
-                colors = OutlinedTextFieldDefaults.colors(
-                    unfocusedBorderColor = colorResource(id = R.color.color_orange),
-                    focusedBorderColor = colorResource(id = R.color.color_orange),
-                )
-            )
-
             Button(
                 onClick = {},
                 modifier = Modifier
@@ -136,7 +90,7 @@ fun SignUpScreen() {
                 )
             ) {
                 Text(
-                    text = "Signup",
+                    text = "Send Email",
                     fontSize = 18.sp,
                     modifier = Modifier.padding(4.dp)
                 )
@@ -149,12 +103,13 @@ fun SignUpScreen() {
                 horizontalArrangement = Arrangement.Center
             ) {
                 Text(
-                    text = "Already have account?",
+                    text = "Don't have account?",
                     fontSize = 16.sp
                 )
                 Text(
-                    text = "Login",
+                    text = "Sign Up",
                     fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold,
                     modifier = Modifier.padding(start = 4.dp),
                     color = colorResource(id = R.color.color_orange)
                 )
@@ -165,6 +120,6 @@ fun SignUpScreen() {
 
 @Preview(showSystemUi = true)
 @Composable
-fun PreviewSignUpScreen() {
-    SignUpScreen()
+fun PreviewForgotPasswordScreen() {
+    ForgotPasswordScreen()
 }
