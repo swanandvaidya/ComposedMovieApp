@@ -1,5 +1,6 @@
 package com.swanandvaidya.composedmovieapp.features.authentication.login
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -25,10 +26,19 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.swanandvaidya.composedmovieapp.R
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(
+    navController: NavHostController
+) {
+
+    BackHandler {
+        navController.popBackStack()
+    }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -147,5 +157,5 @@ fun LoginScreen() {
 @Preview
 @Composable
 fun PreviewLoginScreen() {
-    LoginScreen()
+    LoginScreen(navController = rememberNavController())
 }

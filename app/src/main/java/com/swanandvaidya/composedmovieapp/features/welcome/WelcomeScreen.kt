@@ -20,11 +20,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.swanandvaidya.composedmovieapp.R
 
 @Composable
-fun WelcomeScreen() {
-    Box (
+fun WelcomeScreen(
+    navigateToSignIn: () -> Unit
+) {
+    Box(
         contentAlignment = Alignment.BottomEnd,
         modifier = Modifier
             .fillMaxSize()
@@ -42,29 +46,29 @@ fun WelcomeScreen() {
                 .padding(20.dp)
         ) {
             Text(
-                text ="Discover Your",
+                text = "Discover Your",
                 fontSize = 24.sp,
                 color = Color.White
             )
             Text(
-                text ="Favourites Show",
+                text = "Favourites Show",
                 fontSize = 24.sp,
                 color = colorResource(id = R.color.color_orange)
             )
             Text(
-                text ="Watch Now or Watch Later",
+                text = "Watch Now or Watch Later",
                 fontSize = 24.sp,
                 color = Color.White
             )
             Spacer(modifier = Modifier.padding(10.dp))
             Text(
-                text ="You can browse movies and shows by genre, search for specific title, or check out our recommendation for you.",
+                text = "You can browse movies and shows by genre, search for specific title, or check out our recommendation for you.",
                 fontSize = 18.sp,
                 color = Color.Gray
             )
             Spacer(modifier = Modifier.padding(10.dp))
             Button(
-                onClick = {},
+                onClick = { navigateToSignIn() },
                 modifier = Modifier
                     .fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(
@@ -84,5 +88,7 @@ fun WelcomeScreen() {
 @Preview(showSystemUi = true)
 @Composable
 fun PreviewWelcomeScreen() {
-    WelcomeScreen()
+    WelcomeScreen() {
+        // do nothing
+    }
 }
