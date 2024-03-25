@@ -1,4 +1,4 @@
-package com.swanandvaidya.composedmovieapp.features.authentication.signup
+package com.swanandvaidya.composedmovieapp.features.authentication.signup.presentation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -17,6 +17,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -26,10 +27,18 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.swanandvaidya.composedmovieapp.R
+import com.swanandvaidya.composedmovieapp.features.authentication.signup.domain.SingUpViewModel
 
 @Composable
-fun SignUpScreen() {
+fun SignUpScreen(
+    navHostController: NavHostController
+) {
+    val signupViewModel: SingUpViewModel = viewModel()
+    signupViewModel.isEmailValid.observeAsState()
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -128,6 +137,7 @@ fun SignUpScreen() {
 
             Button(
                 onClick = {},
+                enabled = false,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 30.dp),
@@ -166,5 +176,5 @@ fun SignUpScreen() {
 @Preview(showSystemUi = true)
 @Composable
 fun PreviewSignUpScreen() {
-    SignUpScreen()
+    SignUpScreen(navHostController = rememberNavController())
 }

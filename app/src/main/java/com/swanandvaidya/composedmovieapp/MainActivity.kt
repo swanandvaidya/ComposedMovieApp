@@ -5,8 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.compose.rememberNavController
-import com.swanandvaidya.composedmovieapp.features.welcome.WelcomeScreen
+import com.swanandvaidya.composedmovieapp.navigation.MovieAppNavigation
 import com.swanandvaidya.composedmovieapp.ui.theme.ComposedMovieAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -14,7 +13,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposedMovieAppTheme {
-                MovieApp()
+                MovieAppNavigation()
             }
         }
     }
@@ -23,5 +22,5 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    MovieApp()
+    MovieAppNavigation()
 }

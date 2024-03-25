@@ -1,4 +1,4 @@
-package com.swanandvaidya.composedmovieapp
+package com.swanandvaidya.composedmovieapp.navigation
 
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.core.tween
@@ -10,12 +10,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.swanandvaidya.composedmovieapp.features.authentication.forgotpassword.ForgotPasswordScreen
 import com.swanandvaidya.composedmovieapp.features.authentication.login.LoginScreen
-import com.swanandvaidya.composedmovieapp.features.authentication.signup.SignUpScreen
+import com.swanandvaidya.composedmovieapp.features.authentication.signup.presentation.SignUpScreen
 import com.swanandvaidya.composedmovieapp.features.welcome.WelcomeScreen
-import com.swanandvaidya.composedmovieapp.utility.AppScreens
 
 @Composable
-fun MovieApp() {
+fun MovieAppNavigation() {
 
     val navController = rememberNavController()
 
@@ -52,10 +51,14 @@ fun MovieApp() {
             }
         }
         composable(route = AppScreens.SignInScreen.route) {
-            LoginScreen(navController)
+            LoginScreen(navController) {
+                navController.navigate(AppScreens.SignUpScreen.route) {
+                    launchSingleTop = true
+                }
+            }
         }
         composable(route = AppScreens.SignUpScreen.route) {
-            SignUpScreen()
+            SignUpScreen(navController)
         }
         composable(route = AppScreens.ForgotPasswordScreen.route) {
             ForgotPasswordScreen()

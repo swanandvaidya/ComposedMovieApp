@@ -3,6 +3,7 @@ package com.swanandvaidya.composedmovieapp.features.authentication.login
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -32,7 +33,8 @@ import com.swanandvaidya.composedmovieapp.R
 
 @Composable
 fun LoginScreen(
-    navController: NavHostController
+    navController: NavHostController,
+    navigateToSignUp: () -> Unit
 ) {
 
     BackHandler {
@@ -146,7 +148,11 @@ fun LoginScreen(
                 Text(
                     text = "Sign Up",
                     fontSize = 16.sp,
-                    modifier = Modifier.padding(start = 4.dp),
+                    modifier = Modifier
+                        .padding(start = 4.dp)
+                        .clickable {
+                            navigateToSignUp()
+                        },
                     color = colorResource(id = R.color.color_orange)
                 )
             }
@@ -157,5 +163,7 @@ fun LoginScreen(
 @Preview
 @Composable
 fun PreviewLoginScreen() {
-    LoginScreen(navController = rememberNavController())
+    LoginScreen(navController = rememberNavController()) {
+        // do nothing
+    }
 }

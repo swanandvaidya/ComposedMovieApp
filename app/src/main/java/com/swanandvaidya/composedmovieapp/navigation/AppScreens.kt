@@ -1,4 +1,4 @@
-package com.swanandvaidya.composedmovieapp.utility
+package com.swanandvaidya.composedmovieapp.navigation
 
 sealed class AppScreens(val route: String) {
     object WelcomeScreen : AppScreens(ScreenRoute.WELCOME.name)
